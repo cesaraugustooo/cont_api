@@ -18,7 +18,7 @@ class ContagenService
     public $users368_id_user368;
 
     public function getAll(){
-        return Contagens::with(['turma'])->paginate(20);
+        return Contagens::with(['turma'])->orderBy('data_contagem','DESC')->paginate(20);
     }
 
     public function postContagem($request){
@@ -28,7 +28,7 @@ class ContagenService
 
         return $contagem; 
     }
-
+    
     public function updateContagem($request,$contagem){
         $validate = $request->validate([
             'qtd_contagem'=> 'sometimes|int|min:0',
