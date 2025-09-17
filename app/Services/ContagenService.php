@@ -29,14 +29,20 @@ class ContagenService
         return $contagem; 
     }
 
-    public function updateContagem($request){
-        $request->validate([
+    public function updateContagem($request,$contagem){
+        $validate = $request->validate([
             'qtd_contagem'=> 'sometimes|int|min:0',
             'turmas_id_turma'=>'sometimes|int',
         ]);
 
-        $validate = array_merge($request->validated(),['data_contagem'=>date('Y-m-d'),'hora_contagem' => date('H:i:s'),'users368_id_user368'=>auth()->user()->id_user368]);
+        if(date('Y-m-d') != $contagem->data_contagem){
+            return response()->json(['message'=>'Update não permitido / Fora de horario permitido']);
+        }
 
+        $validate = array_merge($validate,['data_contagem'=>date('Y-m-d'),'hora_contagem' => date('H:i:s'),'users368_id_user368'=>auth()->user()->id_user368]);
+        $contagem->update($validate);
+        
+        return $contagem;
     }
 }
 
