@@ -17,7 +17,7 @@ class User368Controller extends Controller
     {
         return response()->json([User368::all()],200);
     }
-
+//
 
     /**
      * Store a newly created resource in storage.
