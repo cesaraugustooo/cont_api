@@ -19,7 +19,7 @@ class NutriMiddleware
             return $next($request);
         }
 
-        abort(401,'Accesso restrito a nuticionista');
+        abort(401,'Accesso restrito a nutricionista');
         
     }
 }
