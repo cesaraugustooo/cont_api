@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ContagensController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\User368Controller;
@@ -23,3 +24,5 @@ Route::post('/login',[AuthController::class,'login']);
 Route::apiResource('contagens',ContagensController::class)->middleware('auth:sanctum');
 
 Route::post('/upload',[FileController::class,'uploadImage'])->middleware('auth:sanctum');
+
+Route::apiResource('categorias', CategoriaController::class)->middleware(['auth:sanctum','nutri']);
