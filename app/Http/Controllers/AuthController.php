@@ -16,8 +16,6 @@ class AuthController extends Controller
             'password'=>$request->senha_user368
         ];
 
-        
-
         if(Auth::attempt($creds)){
             $user = User368::where('nome_user368',$creds['nome_user368'])->first();
             $token = $user->createToken('api')->plainTextToken;
