@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContagensController;
 use App\Http\Controllers\User368Controller;
+use App\Models\Contagens;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +18,5 @@ Route::middleware(['auth:sanctum','nutri'])->group(function(){
 });
 
 Route::post('/login',[AuthController::class,'login']);
+
+Route::apiResource('contagens',ContagensController::class)->middleware('auth:sanctum');
