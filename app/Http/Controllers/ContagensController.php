@@ -24,24 +24,23 @@ class ContagensController extends Controller
  
     public function store(ContagemRequest $request)
     {
+        $file = $request->file('file');
+
         $contagem = $this->service->postContagem($request);
 
         return response()->json([$contagem]);
     }
 
-    public function show(Contagens $contagens)
+    public function show(Contagens $contagen)
     {
-        //
+        return response()->json($contagen);
     }
 
 
-    public function update(Request $request, Contagens $contagens)
+    public function update(Request $request, Contagens $contagen)
     {
-        //
-    }
+        $contagem = $this->service->updateContagem($request,$contagen);
 
-     function destroy(Contagens $contagens)
-    {
-        //
+        return response()->json([$contagem]);
     }
 }
